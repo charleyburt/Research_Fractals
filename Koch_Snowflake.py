@@ -5,9 +5,13 @@
 
 #import `turtle` to draw the fractal
 from turtle import *
+import time
+
 
 
 distance = 0 #create distance variable to track circumference
+coordinate_list = []
+moment=time.strftime("%Y-%b-%d__%H_%M_%S",time.localtime()) #create moment
 
 #Draws the koch curve (i.e. "one side" of the koch snowflake)
 def koch_curve(side_length, iterations):   #pass in the side length and how many iterations
@@ -17,6 +21,7 @@ def koch_curve(side_length, iterations):   #pass in the side length and how many
         forward(side_length)    # draw one side
         global distance # make distance global so it can be printed out
         distance += side_length #add the side length to distance
+        coordinate_list.append(position())
         return
 
     #draw koch curve (this will be repeated for each iteration)
@@ -47,6 +52,11 @@ def Snowflake(side_length, iterations):    #pass in the side length and number o
         right(120) #move on to the next side
 
     print(distance) #when the entire thing is drawn, print it out
+
+    with open ('results/Koch_Snowflake_' + moment + "_.txt", 'w') as coordinate_file:
+        for coordinates in coordinate_list:
+            coordinate_file.write("%s\n" % str(coordinates))
+
 
 
 
