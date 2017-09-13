@@ -13,9 +13,23 @@ def cartesian_to_polar():
         with open(input_file) as cartesian_file:
             reader = csv.reader(cartesian_file)
             for count, (c1, c2) in enumerate(reader):
-                theta = c1
+                if(int(c1) > 0):
+                    theta = np.arctan(c2/c1)
+                if(c1<0 and c2>=0):
+                    theta = np.arctan(c2/c1) + np.pi
+                if(c1<0 and c2<0):
+                    theta = np.arctan(c2/c1) - np.pi
+                if(c1==0 and c2>0):
+                    theta = np.pi/2
+                if(c1==0 and c2<0):
+                    theta = -np.pi/2
+                if(c1==0 and c2==0):
+                    theta = "undefined"
+
+                degrees = (theta*180)/np.pi
                 r = np.sqrt((c1**2)+(c2**2))
-                polar_file.write('{},{} \n'.format(theta , r))
+
+                polar_file.write('{},{} \n'.format(degrees , r))
 
 
 if __name__ == "__main__":
