@@ -6,6 +6,7 @@
 #import `turtle` to draw the fractal
 from turtle import *
 import time
+import numpy as np
 
 
 
@@ -68,6 +69,9 @@ if __name__ == "__main__":
     length = input_length
     penup()
     backward(length/2.0)
+    left(90)
+    forward(np.sqrt((length**2)-((length/2.0)**2))/3)
+    right(90)
     pendown()
     input_iterations = int(input("How many iterations? : "))
     Snowflake(length, input_iterations)
