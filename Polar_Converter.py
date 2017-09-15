@@ -13,8 +13,8 @@ def cartesian_to_polar():
         with open(input_file) as cartesian_file:
             reader = csv.reader(cartesian_file)
             for count, (x_string, y_string) in enumerate(reader):
-                x_float = round(float(x_string),10)
-                y_float = round(float(y_string),10)
+                x_float = float(x_string)
+                y_float = float(y_string)
                 if(x_float > 0):
                     theta = np.arctan(y_float/x_float)
                 if(x_float<0 and y_float>=0):
