@@ -71,5 +71,6 @@ if __name__ == "__main__":
     input_iterations = int(input("How many iterations? : "))
     coordinate_file = open ('results/' + "triangle_" + str(input_iterations) + "_iterations_.csv", 'w')
     Snowflake(length, input_iterations)
+    coordinate_file.write('{},{} \n'.format(xcor() , ycor()))
     coordinate_file.close()
     done()
