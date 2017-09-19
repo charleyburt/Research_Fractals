@@ -14,8 +14,8 @@ def fill_in_gaps():
     total = 100000
 
     input_file = input("Enter file path: ")
-    input_iterations = input("How many iterations: ")
-    with open ('results/full_results/' + input_iterations + "_iterations_.csv", 'w') as full_file:
+    input_name = input("What would you like to name the output file: ")
+    with open ('results/full_results/' + input_name + ".csv", 'w') as full_file:
         with open(input_file) as cartesian_file:
             reader = csv.reader(cartesian_file)
             writer = csv.writer(full_file)

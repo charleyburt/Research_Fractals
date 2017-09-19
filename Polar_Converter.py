@@ -8,8 +8,8 @@ import numpy as np
 def cartesian_to_polar():
 
     input_file = input("Enter file path: ")
-    input_iterations = input("How many iterations: ")
-    with open ('results/polar_results/POLAR_' + input_iterations + "_iterations_.csv", 'w') as polar_file:
+    input_name = input("What would you like to name the output file: ")
+    with open ('results/polar_results/' + input_name + ".csv", 'w') as polar_file:
         with open(input_file) as cartesian_file:
             reader = csv.reader(cartesian_file)
             for count, (x_string, y_string) in enumerate(reader):
