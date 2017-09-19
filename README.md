@@ -17,3 +17,7 @@ Quick Start
 `Polar_Colverter.py`
   - Reads in the file exported by `Filler.py`
   - Converts (x,y) coordiantes to (r, theta)
+
+`Width_Finder.py` **DEV**
+  - Reads in a file exported by `Polar_Converter.py`
+  - Goes through the file and finds the largest `theta` for each `r` specified by the user
