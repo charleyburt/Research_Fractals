@@ -7,22 +7,29 @@ import numpy as np
 
 def fill_in_gaps():
 
+    step = 0.0
+    slope = 0.0
+    x_col = 0
+    y_col = 1
+    total = 100000
+
     input_file = input("Enter file path: ")
     input_iterations = input("How many iterations: ")
     with open ('results/full_results/' + input_iterations + "_iterations_.csv", 'w') as full_file:
         with open(input_file) as cartesian_file:
             reader = csv.reader(cartesian_file)
             writer = csv.writer(full_file)
-            for count, (x_string, y_string) in enumerate(reader):
-                x_float = float(x_string)
-                y_float = float(y_string)
+            csvList = []
+            for rows in reader:
+                csvList.append(rows)
 
-                full_x = np.arange(1, 10, 0.1)
-                full_y = np.arange(1, 10, 0.1)
-
-                for x, y in zip(full_x, full_y):
-                    writer.writerow([x, y])
-
+            for i in range(len(csvList) - 1):
+                step = (float(csvList[i+1][x_col]) - float(csvList[i][x_col]))/total
+                slope = (float(csvList[i+1][y_col]) - float(csvList[i][y_col]))/(float(csvList[i+1][x_col]) - float(csvList[i][x_col]))
+                for j in range(total):
+                    x_line = (float(csvList[i][x_col]) + (j * step))
+                    y_line = (float(csvList[i][y_col]) + (j * step * slope))
+                    writer.writerow([x_line , y_line])
 
 
 if __name__ == "__main__":
