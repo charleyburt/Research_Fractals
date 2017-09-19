@@ -1,12 +1,19 @@
 # Research Fractals
 
-Koch Snowflake
----------------
+Quick Start
+------
 
-- Allows the user to choose the:
-  - Speed drawn
-  - Length of a side
-  - Number of iterations 
-- Returns the circumference 
+`Koch_Snowflake.py`
+  - Allows the user to choose the number of iterations
+  - Draws the Snowflake
+  - Saves the "corner" points to a file
+  - Prints out the circumference
 
-Based loosely off [this](http://hmf.enseeiht.fr/travaux/CD9900/travaux/optmfn/hi/00pa/mfn16/part3.html)
+`Filler.py`
+  - Reads in the file exported by `Koch_Snowflake.py`
+  - Creates a certain number of points (specified by user) between the "corners"
+  - Exports a new file with "filled in" lines 
+  
+`Polar_Colverter.py`
+  - Reads in the file exported by `Filler.py`
+  - Converts (x,y) coordiantes to (r, theta)
