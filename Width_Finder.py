@@ -4,16 +4,15 @@
 
 import csv
 
+def keyfinder(elem):
+    return elem[0]
+
 def width_finder():
     width_sum = 0.0
     degrees = 360
-    closest = 10
-    difference = 10
-    theta = 0
-    r = 1
-    average_width = 0
-    check = 0
-    value = 0
+    current = 0
+    #clear the new list
+    new_list = []
 
 
     input_file = input("Enter file path: ")
@@ -23,24 +22,31 @@ def width_finder():
         for rows in reader:
             List.append(rows)
 
-    #for every degree (0-360)
-    for curr_degree in range(degrees):
+    #sort list
+    List.sort(key=keyfinder)
 
-        #go through every element in the list
-        for all_degrees in range(len(List)-1):
-            #get the difference
-            difference = abs(curr_degree - float(List[all_degrees][theta]))
-            #find the smallest difference
-            if (difference <= closest):
-                #set the smallest difference
-                closest = difference
-                value = all_degrees
-        width_sum = width_sum + float(List[value][r])
-        check = check + 1
+    #go through every degree
+    for degree in range(degrees):
 
-    average_width = width_sum / degrees
-    print(average_width)
-    print(check)
+
+
+        #go through the list
+        while (float(List[current][0]) < degree):      #while the elements are still less than the current degree
+            new_list.append(float(List[current][1]))      #add the radius to a new list
+            del(List[current])             #delete them from the old list
+            current = current + 1
+
+        if new_list:
+            width_sum = width_sum + max(new_list)
+            new_list = []
+            current = 0
+
+
+
+
+
+    print(width_sum/degrees)
+
 
 if __name__ == "__main__":
     width_finder()
