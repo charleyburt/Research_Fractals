@@ -11,7 +11,7 @@ def fill_in_gaps():
     slope = 0.0
     x_col = 0
     y_col = 1
-    total = 100000
+    total = 10000
 
     input_file = input("Enter file path: ")
     input_name = input("What would you like to name the output file: ")
@@ -29,7 +29,7 @@ def fill_in_gaps():
                 for j in range(total):
                     x_line = (float(csvList[i][x_col]) + (j * step))
                     y_line = (float(csvList[i][y_col]) + (j * step * slope))
-                    writer.writerow([x_line , y_line])
+                    writer.writerow([float(x_line) , float(y_line)])
 
 
 if __name__ == "__main__":

@@ -33,7 +33,7 @@ def cartesian_to_polar():
                 degrees = (theta*180)/np.pi
                 r = np.sqrt((x_float**2)+(y_float**2))
 
-                polar_file.write('{},{} \n'.format(degrees , r))
+                polar_file.write('{},{} \n'.format(float(degrees) , float(r)))
 
 
 if __name__ == "__main__":

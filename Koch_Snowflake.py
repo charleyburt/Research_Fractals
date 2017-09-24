@@ -17,7 +17,7 @@ def koch_curve(side_length, iterations):   #pass in the side length and how many
 
 
     if iterations == 0:    # if 0 iterations
-        coordinate_file.write('{},{} \n'.format(xcor() , ycor()))
+        coordinate_file.write('{},{} \n'.format(float(xcor()) , float(ycor())))
         forward(side_length)    # draw one side
         global distance # make distance global so it can be printed out
         distance += side_length #add the side length to distance
@@ -71,6 +71,6 @@ if __name__ == "__main__":
     input_iterations = int(input("How many iterations? : "))
     coordinate_file = open ('results/cartesian_results/' + "triangle_" + str(input_iterations) + "_iterations_.csv", 'w')
     Snowflake(length, input_iterations)
-    coordinate_file.write('{},{} \n'.format(xcor() , ycor()))
+    coordinate_file.write('{},{} \n'.format(float(xcor()) , float(ycor())))
     coordinate_file.close()
     done()
