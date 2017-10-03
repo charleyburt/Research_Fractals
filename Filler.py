@@ -11,7 +11,7 @@ def fill_in_gaps():
     slope = 0.0
     x_col = 0
     y_col = 1
-    total = 10000
+    total = 10
 
     input_file = input("Enter file path: ")
     input_name = input("What would you like to name the output file: ")

@@ -33,9 +33,11 @@ def width_finder():
         #     List.append(rows)
 
     List.sort(key=keyfinder)                                #sort list
+    max_degree = max(m[0] for m in List)
+    print(max_degree)
 
 
-    while degree < 360:
+    while degree < max_degree:
         while (float(List[current][0]) < degree):
             new_list.append(List[current][1])
             del(List[current])
@@ -47,7 +49,7 @@ def width_finder():
             tot_samples = tot_samples + 1
 
 
-        degree = degree + 1
+        degree = degree + 0.5
 
 
     print(width_sum/tot_samples)
