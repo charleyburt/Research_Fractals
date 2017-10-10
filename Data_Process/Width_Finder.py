@@ -20,65 +20,58 @@ def width_finder():
     new_list = []
     tot_samples = 0
     degree = 0
-    test = 0
+
 
 
     #choose the input file
     input_file = input("Enter file path: ")
-    with open(input_file) as all_points:                    #open it
-        reader = csv.reader(all_points, delimiter=',')                     #create reader
-        List = [[float(row[0]), float(row[1])] for row in reader]
-        # List = []                                        #create list
-        # for rows in reader:                                 #populate list
-        #     List.append(rows)
 
-    List.sort(key=keyfinder)                                #sort list
+    #Open the input file
+    with open(input_file) as all_points:
+
+        #Crete Reader
+        reader = csv.reader(all_points, delimiter=',')
+
+        #Populate a List with data from file
+        List = [[float(row[0]), float(row[1])] for row in reader]
+
+    #Sort the list by degree
+    List.sort(key=keyfinder)
+
+    #Get the Max Degree in the list
     max_degree = max(m[0] for m in List)
+
+    #For small iterations sometimes the max degree recorded is much less than 360
+    #The max_degree variable makes sure we dont go too far
     print(max_degree)
 
 
+    #Go through all the degrees
     while degree < max_degree:
-        while (float(List[current][0]) < degree):
-            new_list.append(List[current][1])
-            del(List[current])
-        test = test + 1
 
+        #go through all the degrees less than the current degree
+        while (float(List[current][0]) < degree):
+            #add them to a new list
+            new_list.append(List[current][1])
+            #delete them from the old list
+            del(List[current])
+
+        #if there is something in the list (again, mainly only used for small iterations)
         if len(new_list) != 0:
+            #get the max and add it to the sum
             width_sum = width_sum + float(max(new_list))
+            #clear the new list
             new_list = []
+            #Keep track of how many samples have been taken (used to get average)
             tot_samples = tot_samples + 1
 
-
+        #THIS IS WHERE YOU CAN CHOOSE HOW PRECISE TO BE
         degree = degree + 0.5
 
-
+    #Print the average
     print(width_sum/tot_samples)
-    print(tot_samples)
-    print(test)
 
 
-
-    # #go through every degree (0-360)
-    # for degree in range(degrees):
-    #
-    #     #go through the list
-    #     while (List[current][0] < degree):         #while the elements are still less than the current degree
-    #         new_list.append(float(List[current][1]))        #add the radius to a new list
-    #         del(List[current])                            #delete them from the old list
-    #         current = current + 1
-    #
-    #     #if the new_list exists
-    #     if new_list:
-    #         width_sum = width_sum + max(new_list)           #add the max of the new list (all radii for current angle) to the sum
-    #         tot_samples =  tot_samples + 1
-    #         new_list = []                                   #clear the new list
-    #         curr_elem = 0                                   #reset curr_elem
-    #
-    #     degree = degree + 1
-    #
-    # print(width_sum/degrees)
-    # print(tot_samples)
-
-
+#To run from command line
 if __name__ == "__main__":
     width_finder()
