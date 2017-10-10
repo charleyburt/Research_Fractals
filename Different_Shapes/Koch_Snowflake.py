@@ -1,14 +1,11 @@
 #Title: Koch Snowflake
 #Author: Charley Burtwistle
-#Last Updated: September 11, 2017
+#Last Updated: October 10, 2017
 
 
 #import `turtle` to draw the fractal
 from turtle import *
-import time
 import numpy as np
-
-
 
 distance = 0 #create distance variable to track circumference
 
