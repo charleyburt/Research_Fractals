@@ -1,30 +1,26 @@
-#Title: Koch Snowflake
+#Title: Square snowflake
 #Author: Charley Burtwistle
-#Last Updated: September 11, 2017
+#Last Updated: September 8, 2017
 
 
 #import `turtle` to draw the fractal
 from turtle import *
-import time
-import numpy as np
 
 
+circumference = 0 #create circumference variable
 
-distance = 0 #create distance variable to track circumference
-
-#Draws the koch curve (i.e. "one side" of the koch snowflake)
+#Draws one side of the fractal
 def koch_curve(side_length, iterations):   #pass in the side length and how many iterations
 
 
     if iterations == 0:    # if 0 iterations
         coordinate_file.write('{},{} \n'.format(float(xcor()) , float(ycor())))
         forward(side_length)    # draw one side
-        global distance # make distance global so it can be printed out
-        distance += side_length #add the side length to distance
-
+        global circumference # make circumference global so it can be printed out
+        circumference += side_length #add the side length to circumference
         return
 
-    #draw koch curve (this will be repeated for each iteration)
+    #draw the fractal
 
     #reduce side length by 1/3
     side_length /= 3.0
@@ -33,43 +29,44 @@ def koch_curve(side_length, iterations):   #pass in the side length and how many
     koch_curve(side_length, iterations-1)
 
     #draw "up"
-    left(60)
-    koch_curve(side_length, iterations-1)
-
-    #draw "down"
-    right(120)
+    left(90)
     koch_curve(side_length, iterations-1)
 
     #draw "over"
-    left(60)
+    right(90)
     koch_curve(side_length, iterations-1)
 
-#Draws the koch curve 3 times (i.e. the koch snowflake)
+    #draw "down"
+    right(90)
+    koch_curve(side_length, iterations-1)
+
+    #draw "over"
+    left(90)
+    koch_curve(side_length, iterations-1)
+
+#Draws the koch curve 4 times (i.e. the square snowflake)
 def Snowflake(side_length, iterations):    #pass in the side length and number of iterations
 
-    for i in range(3): #for each side of the triangle
-        koch_curve(side_length, iterations) #draw the koch curve
-        right(120) #move on to the next side
+    for i in range(4): #for each side of the square
+        koch_curve(side_length, iterations) #draw the side of the fractal
+        right(90) #move on to the next side
 
-    print(distance) #when the entire thing is drawn, print it out
-
-
-
+    print(circumference) #when the entire thing is drawn, print out the circumference drawn
 
 
 
 # Code to run from command line
 if __name__ == "__main__":
-    speed(0)
+    speed('fastest')
     length = 300
     penup()
     backward(length/2.0)
     left(90)
-    forward(np.sqrt((length**2)-((length/2.0)**2))/3)
+    forward(length/2.0)
     right(90)
     pendown()
     input_iterations = int(input("How many iterations? : "))
-    coordinate_file = open ('results/cartesian_results/' + "triangle_" + str(input_iterations) + "_iterations_.csv", 'w')
+    coordinate_file = open ('../results/cartesian_results/' + "triangle_" + str(input_iterations) + "_iterations_.csv", 'w')
     Snowflake(length, input_iterations)
     coordinate_file.write('{},{} \n'.format(float(xcor()) , float(ycor())))
     coordinate_file.close()
