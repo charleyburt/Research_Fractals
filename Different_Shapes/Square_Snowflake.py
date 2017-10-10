@@ -14,6 +14,7 @@ def koch_curve(side_length, iterations):   #pass in the side length and how many
 
 
     if iterations == 0:    # if 0 iterations
+        coordinate_file.write('{},{} \n'.format(float(xcor()) , float(ycor())))
         forward(side_length)    # draw one side
         global circumference # make circumference global so it can be printed out
         circumference += side_length #add the side length to circumference
@@ -21,8 +22,8 @@ def koch_curve(side_length, iterations):   #pass in the side length and how many
 
     #draw the fractal
 
-    #reduce side length by 1/4
-    side_length /= 4.0
+    #reduce side length by 1/3
+    side_length /= 3.0
 
     #draw "over"
     koch_curve(side_length, iterations-1)
@@ -56,13 +57,17 @@ def Snowflake(side_length, iterations):    #pass in the side length and number o
 
 # Code to run from command line
 if __name__ == "__main__":
-    input_speed = int(input("How fast would you like to draw between 0-10? (0=fast, 10=slow): "))
-    speed(input_speed)
-    input_length = int(input("How big would you like your fractal between 100-300? (100=small, 300=big): "))
-    length = input_length
+    speed('fastest')
+    length = 300
     penup()
     backward(length/2.0)
+    left(90)
+    forward(length/2.0)
+    right(90)
     pendown()
     input_iterations = int(input("How many iterations? : "))
+    coordinate_file = open ('../results/cartesian_results/' + "triangle_" + str(input_iterations) + "_iterations_.csv", 'w')
     Snowflake(length, input_iterations)
+    coordinate_file.write('{},{} \n'.format(float(xcor()) , float(ycor())))
+    coordinate_file.close()
     done()
