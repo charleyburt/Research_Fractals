@@ -16,22 +16,23 @@ up with our own. The following walks through the basics of it.
 Quick Start
 ------
 
-`Koch_Snowflake.py`
+`./Different_Shapes/*`
   - Allows the user to choose the number of iterations
-  - Draws the Snowflake
+  - Draws the Shape
   - Saves the "corner" points to a file
   - Prints out the circumference
 
-`Filler.py`
+`./Data_Process/`
+- `Filler.py`
   - Reads in the file exported by `Koch_Snowflake.py`
   - Creates a certain number of points (specified by user) between the "corners"
   - Exports a new file with "filled in" lines 
   
-`Polar_Colverter.py`
+- `Polar_Colverter.py`
   - Reads in the file exported by `Filler.py`
   - Converts (x,y) coordiantes to (r, theta)
 
-`Width_Finder.py`
+- `Width_Finder.py`
   - Reads in a file exported by `Polar_Converter.py`
   - Goes through the file and finds the largest `r` for each `theta` specified by the user
 	- For examples there may be multiple points at a given `theta`. This will only find the furthest point from the origin.
