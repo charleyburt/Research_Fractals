@@ -33,7 +33,7 @@ def koch_curve(side_length, iterations):   #pass in the side length and how many
 
     #draw "up"
     left(120)
-    koch_curve(side_length, iterations-1)
+    koch_curve(side_length, 0)
 
     #draw "down"
     right(120)
@@ -41,7 +41,7 @@ def koch_curve(side_length, iterations):   #pass in the side length and how many
 
     #draw "over"
     right(120)
-    koch_curve(side_length, iterations-1)
+    koch_curve(side_length, 0)
 
     left(120)
     koch_curve(side_length, iterations-1)
