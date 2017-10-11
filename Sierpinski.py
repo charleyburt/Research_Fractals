@@ -9,6 +9,7 @@ import time
 import numpy as np
 
 # just a test, do not break - kw
+# I really hope I figure out git eventually. I have fond memories of breaking the svn repository in undergrad.
 
 distance = 0 #create distance variable to track circumference
 
