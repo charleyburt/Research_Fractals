@@ -27,7 +27,7 @@ def fill_in_gaps():
     input_name = input("What would you like to name the output file: ")
 
     #Open the files
-    with open ('results/full_results/' + input_name + ".csv", 'w') as full_file:
+    with open ('../results/full_results/' + input_name + ".csv", 'w') as full_file:
         with open(input_file) as cartesian_file:
 
             #Create reader and writer
@@ -44,7 +44,10 @@ def fill_in_gaps():
             #Figure out the step and slope
             for i in range(len(csvList) - 1):
                 step = (float(csvList[i+1][x_col]) - float(csvList[i][x_col]))/total
-                slope = (float(csvList[i+1][y_col]) - float(csvList[i][y_col]))/(float(csvList[i+1][x_col]) - float(csvList[i][x_col]))
+                if ((float(csvList[i+1][x_col]) - float(csvList[i][x_col])) == 0):
+                    slope = 1
+                else:
+                    slope = (float(csvList[i+1][y_col]) - float(csvList[i][y_col]))/(float(csvList[i+1][x_col]) - float(csvList[i][x_col]))
 
                 #Fill in the points
                 for j in range(total):

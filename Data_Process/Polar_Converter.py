@@ -18,7 +18,7 @@ def cartesian_to_polar():
     input_name = input("What would you like to name the output file: ")
 
     #Open files
-    with open ('results/polar_results/' + input_name + ".csv", 'w') as polar_file:
+    with open ('../results/polar_results/' + input_name + ".csv", 'w') as polar_file:
         with open(input_file) as cartesian_file:
 
             #Create reader
