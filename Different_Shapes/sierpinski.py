@@ -7,7 +7,7 @@
 import numpy as np
 from turtle import *
 
-
+distance = 0
 #Draws one side
 def Side(l,d):
 
@@ -17,7 +17,7 @@ def Side(l,d):
      coordinate_file.write('{},{} \n'.format(float(xcor()) , float(ycor())))
      forward(l)    # draw one side
      global distance # make distance global so it can be printed out
-     distance += side_length #add the side length to distance
+     distance += l #add the side length to distance
      return
 
   #Recursive algorithm to draw triangle (Credit: Kris Williams)
@@ -43,6 +43,7 @@ def diagDown(l):
 #To run from command line
 if __name__ == "__main__":
     speed('fastest')
+    length = 300
     penup()
     backward(length/2.0)
     left(90)
