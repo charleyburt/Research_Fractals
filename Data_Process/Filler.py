@@ -20,7 +20,7 @@ def fill_in_gaps():
     y_col = 1       #the column that holds our y values
 
     #THIS WILL DETERMINE HOW MANY POINTS ARE IN BETWEEN EACH POINT
-    total = 10
+    total = 100
 
     #Ask user where the data is coming from/going to
     input_file = input("Enter file path: ")
@@ -44,10 +44,7 @@ def fill_in_gaps():
             #Figure out the step and slope
             for i in range(len(csvList) - 1):
                 step = (float(csvList[i+1][x_col]) - float(csvList[i][x_col]))/total
-                if ((float(csvList[i+1][x_col]) - float(csvList[i][x_col])) == 0):
-                    slope = 1
-                else:
-                    slope = (float(csvList[i+1][y_col]) - float(csvList[i][y_col]))/(float(csvList[i+1][x_col]) - float(csvList[i][x_col]))
+                slope = (float(csvList[i+1][y_col]) - float(csvList[i][y_col]))/(float(csvList[i+1][x_col]) - float(csvList[i][x_col]))
 
                 #Fill in the points
                 for j in range(total):
