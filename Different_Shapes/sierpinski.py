@@ -29,6 +29,7 @@ def Side(l,d):
 
 #Draw Diagonal
 def diagUp(l):
+   coordinate_file.write('{},{} \n'.format(float(xcor()) , float(ycor())))
 
    left(120)
    forward(l)
@@ -36,13 +37,15 @@ def diagUp(l):
 
 #Draw Diagonal
 def diagDown(l):
+   coordinate_file.write('{},{} \n'.format(float(xcor()) , float(ycor())))
+
    right(120)
    forward(l)
    left(120)
 
 #To run from command line
 if __name__ == "__main__":
-    speed('fastest')
+    speed(0)
     length = 300
     penup()
     backward(length/2.0)
