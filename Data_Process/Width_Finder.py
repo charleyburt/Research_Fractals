@@ -5,6 +5,9 @@
 
 # import
 import csv
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
 #needed in order to specify which element to sort by
 def keyfinder(elem):
@@ -12,6 +15,9 @@ def keyfinder(elem):
 
 #width finder method
 def width_finder():
+
+    output_theta = []
+    output_r = []
 
     #initialize variables
     width_sum = 0.0
@@ -59,17 +65,28 @@ def width_finder():
         #if there is something in the list (again, mainly only used for small iterations)
         if len(new_list) != 0:
             #get the max and add it to the sum
-            width_sum = width_sum + float(max(new_list))
+            max_r = float(max(new_list))
+            width_sum = width_sum + max_r
+
+            #add the point to lists to output
+            output_theta.append(degree*np.pi/180)
+            output_r.append(max_r)
+
             #clear the new list
             new_list = []
             #Keep track of how many samples have been taken (used to get average)
             tot_samples = tot_samples + 1
 
         #THIS IS WHERE YOU CAN CHOOSE HOW PRECISE TO BE
-        degree = degree + 0.5
+        degree = degree + 1
 
     #Print the average
     print(width_sum/tot_samples)
+    plt.axes(polar = True)
+    plt.scatter(output_theta,output_r,marker=',',s=1)
+    plt.show()
+
+
 
 
 #To run from command line
