@@ -46,6 +46,7 @@ def diagDown(l):
 #To run from command line
 if __name__ == "__main__":
     speed(0)
+    tracer(0,0)
     length = 300
     penup()
     backward(length/2.0)
@@ -64,4 +65,6 @@ if __name__ == "__main__":
     #Record the last point (same as first point)
     coordinate_file.write('{},{} \n'.format(float(xcor()) , float(ycor())))
     coordinate_file.close()
+    print(distance)
+    update()
     done()

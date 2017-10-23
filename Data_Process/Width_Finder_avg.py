@@ -78,7 +78,7 @@ def width_finder():
             tot_samples = tot_samples + 1
 
         #THIS IS WHERE YOU CAN CHOOSE HOW PRECISE TO BE
-        degree = degree + 2
+        degree = degree + 1
 
     #Print the average
     print(width_sum/tot_samples)

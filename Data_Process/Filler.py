@@ -20,7 +20,7 @@ def fill_in_gaps():
     y_col = 1       #the column that holds our y values
 
     #THIS WILL DETERMINE HOW MANY POINTS ARE IN BETWEEN EACH POINT
-    total = 100
+    total = 1000
 
     #Ask user where the data is coming from/going to
     input_file = input("Enter file path: ")
