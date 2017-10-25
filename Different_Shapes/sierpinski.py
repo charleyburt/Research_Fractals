@@ -45,9 +45,9 @@ def diagDown(l):
 
 #To run from command line
 if __name__ == "__main__":
-    speed(0)
+    speed(3.4)
     tracer(0,0)
-    length = 300
+    length = 300.0
     penup()
     backward(length/2.0)
     left(90)
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     pendown()
     input_iterations = int(input("How many iterations? : "))
     coordinate_file = open ('../results/cartesian_results/' + "triangle_" + str(input_iterations) + "_iterations_.csv", 'w')
-    size  = 300
+    size  = 300.0
     Side(size,input_iterations)
     right(120)
     Side(size,input_iterations)
