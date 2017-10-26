@@ -3,7 +3,7 @@ import csv
 
 PI = math.pi
 
-def give_dots(R,r,r_,resolution=2*PI/1000,spins=5):
+def give_dots(R,r,r_,resolution=2*PI/100000,spins=5):
 
     def x(theta):
         x =  (R - r) * math.cos( theta ) + r_* math.cos( (R - r) / r * theta )
@@ -15,9 +15,14 @@ def give_dots(R,r,r_,resolution=2*PI/1000,spins=5):
 
     theta = 0.0
     while theta < 2*PI*spins:
-        out.write('{},{} \n'.format(x(theta), y(theta)))
+        x1 = x(theta)
+        y1 = y(theta)
 
-        yield (x(theta), y(theta))
+
+
+        out.write('{},{} \n'.format(x1, y1))
+
+        yield (x1, y1)
         theta += resolution
 
 
@@ -28,7 +33,7 @@ if __name__=='__main__':
     input_name = input("Name?: ")
     out = open ('../results/cartesian_results/' + 'spiro' + input_name + '.csv', 'w')
 
-    dots = give_dots(4,10,5.5, spins=25)
+    dots = give_dots(10,1,5.5, spins=25)
 
     x,y = zip(*dots)
 
