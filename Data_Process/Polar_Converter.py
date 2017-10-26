@@ -9,6 +9,7 @@
 #imports
 import csv
 import numpy as np
+import itertools
 
 #method
 def cartesian_to_polar():
@@ -24,9 +25,10 @@ def cartesian_to_polar():
             #Create reader
             reader = csv.reader(cartesian_file)
 
+
             #Go through input file
             for count, (x_string, y_string) in enumerate(reader):
-
+            #for row, (x_string, y_string) in itertools.islice(reader, 10,20):
                 #Get current (x,y) point
                 x_float = float(x_string)
                 y_float = float(y_string)
