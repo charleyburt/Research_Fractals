@@ -10,7 +10,7 @@ def plot():
     theta = pd.read_csv(input_file, usecols = [0])
     r = pd.read_csv(input_file, usecols = [1])
 
-    plt.axes(polar = True)
+    #plt.axes(polar = True)
     plt.scatter(theta*np.pi/180,r,marker=',',s=1)
 
     plt.show()
