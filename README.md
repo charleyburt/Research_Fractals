@@ -32,12 +32,9 @@ Quick Start
   - Reads in the file exported by `Filler.py`
   - Converts (x,y) coordiantes to (r, theta)
 
-- `Width_Finder.py`
+- `Width_Finder_*.py`
   - Reads in a file exported by `Polar_Converter.py`
-  - Goes through the file and finds the largest `r` for each `theta` specified by the user
-	- For examples there may be multiple points at a given `theta`. This will only find the furthest point from the origin.
-	- Every degree would give 360 samples, 0.5 angles would give 720 samples, etc.
-  - Returns the average "width" of a fractal 
+  - Returns the "width" of a fractal 
 
 Credits
 ------
