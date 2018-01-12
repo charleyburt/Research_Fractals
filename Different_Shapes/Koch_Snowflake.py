@@ -58,7 +58,7 @@ def Snowflake(side_length, iterations):    #pass in the side length and number o
 # Code to run from command line
 if __name__ == "__main__":
     speed('fastest')
-    tracer(0,0)
+    #tracer(0,0)
     length = 300
     penup()
     backward(length/2.0)
@@ -71,5 +71,5 @@ if __name__ == "__main__":
     Snowflake(length, input_iterations)
     coordinate_file.write('{},{} \n'.format(float(xcor()) , float(ycor())))
     coordinate_file.close()
-    update()
+    #update()
     done()
